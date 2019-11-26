@@ -1,0 +1,13 @@
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+// Returns a string of table body html and message data
+function getData($sql)
+{
+    $data = array();
+    if($sql->rowCount() > 0) {
+        $data['table'] = getTableRows($sql->fetchAll(PDO::FETCH_ASSOC));
+    }
+
+    $data['message'] = getResultMessage($sql->rowCount());
+    return $data;
+}

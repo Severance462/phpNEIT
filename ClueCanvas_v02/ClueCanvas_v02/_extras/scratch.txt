@@ -1,0 +1,169 @@
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6" id="card1">
+                        <img style="max-height: 100%; max-width: 100%" src="img/Cards/cardBack.jpg">
+                    </div>
+                    <div class="col-6" id="card2">
+                        <img style="max-height: 100%; max-width: 100%" src="img/Cards/cardBack.jpg">
+                    </div>
+                    <div class="col-6">
+                        <h4>Card 1</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4>Card 2</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- end modal -->
+
+
+
+
+
+
+
+
+
+while ($nextPlayer != $currentPlayerID) {
+                //print_r($results);
+                //find out which match and set their update variables for hte sql statement
+                //weapons and person
+                if (($results[0][$selWeapons] == $nextPlayer) && $results[0][$selPerson] == $nextPlayer) {
+                    $partialSql .= "$selWeapons = $nextPlayer, $selPerson = $nextPlayer, WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                    choice();
+                    echo "weapon and person updated";
+                    $nextPlayer = $currentPlayerID;
+
+                    //weapons and room
+                } else if (($results[0][$selWeapons] == $nextPlayer) && ($results[0][$txtRoom] == $nextPlayer)) {
+                    $partialSql .= "$selWeapons = $nextPlayer, $txtRoom = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                    choice();
+                    echo "weapon and room updated";
+                    $nextPlayer = $currentPlayerID;
+
+                    //person and room
+                } else if (($results[0][$selPerson] == $nextPlayer) && ($results[0][$txtRoom] == $nextPlayer)) {
+                    $partialSql .= "$selPerson = $nextPlayer, $txtRoom = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                    choice();
+                    echo "room and person updated";
+                    $nextPlayer = $currentPlayerID;
+
+                    //person
+                } else if ($results[0][$selPerson]) {
+                    $partialSql .= "$selPerson = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                    echo "person updated";
+                    $nextPlayer = $currentPlayerID;
+                    //weapons
+                } else if ($results[0][$selWeapons]) {
+                    $partialSql .= "$selWeapons = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                    echo "weapon updated";
+                    //room
+                } else if ($results[0][$txtRoom]) {
+                    $partialSql .= "$txtRoom = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                    echo "room updated";
+                    $nextPlayer = $currentPlayerID;
+                } else {
+                    echo "- no match - ";
+                }
+
+                if ($nextPlayer > $numPlayers) {
+                    $nextPlayer = 1;
+                } else if ($nextPlayer == !$currentPlayerID) {
+                    $nextPlayer++;
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //print_r($results);
+                    //find out which match and set their update variables for hte sql statement
+                    //weapons and person
+                    if (($results[0][$selWeapons] == $nextPlayer) && $results[0][$selPerson] == $nextPlayer) {
+                        $partialSql .= "$selWeapons = $nextPlayer, $selPerson = $nextPlayer, WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                        choice();
+                        echo "weapon and person updated";
+                        $nextPlayer = $currentPlayerID;
+
+                        //weapons and room
+                    } else if (($results[0][$selWeapons] == $nextPlayer) && ($results[0][$txtRoom] == $nextPlayer)) {
+                        $partialSql .= "$selWeapons = $nextPlayer, $txtRoom = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                        choice();
+                        echo "weapon and room updated";
+                        $nextPlayer = $currentPlayerID;
+
+                        //person and room
+                    } else if (($results[0][$selPerson] == $nextPlayer) && ($results[0][$txtRoom] == $nextPlayer)) {
+                        $partialSql .= "$selPerson = $nextPlayer, $txtRoom = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                        choice();
+                        echo "room and person updated";
+                        $nextPlayer = $currentPlayerID;
+
+                        //person
+                    } else if ($results[0][$selPerson]) {
+                        $partialSql .= "$selPerson = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                        echo "person updated";
+                        $nextPlayer = $currentPlayerID;
+                        //weapons
+                    } else if ($results[0][$selWeapons]) {
+                        $partialSql .= "$selWeapons = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                        echo "weapon updated";
+                        //room
+                    } else if ($results[0][$txtRoom]) {
+                        $partialSql .= "$txtRoom = $nextPlayer WHERE gameID LIKE $gameID AND playerID LIKE $currentPlayerID AND notebookID LIKE $nextPlayer";
+                        echo "room updated";
+                        $nextPlayer = $currentPlayerID;
+                    }
+                    else
+                    {
+                        echo "- no match - ";
+                    }
+
+                    if($nextPlayer > $numPlayers)
+                    {
+                        $nextPlayer = 1;
+                    }
+                    else if($nextPlayer == !$currentPlayerID)
+                    {
+                        $nextPlayer++;
+                    }

@@ -1,0 +1,15 @@
+.show-item {
+    display: block;
+}
+
+.hide-item {
+    display: none;
+}
+
+div.modal div.modal-backdrop {
+    z-index: 0;
+}
+
+body.modal-open div.modal-backdrop {
+    z-index: 0;
+}
